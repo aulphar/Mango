@@ -4,7 +4,7 @@ namespace Mango.Web.Service.IService;
 
 public interface IBaseService
 {
-    // Fr means for requestdto
-    Task<ResponseDto?> SendAsyncFr(RequestDto requestDto);
+    
+    Task<ResponseDto?> SendAsync(RequestDto requestDto);
 
 }

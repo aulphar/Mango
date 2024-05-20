@@ -18,7 +18,7 @@ public class BaseService : IBaseService
         _httpClientFactory = httpClientFactory;
     }
      // Fr means for requestdto
-    public async Task<ResponseDto?> SendAsyncFr(RequestDto requestDto)
+    public async Task<ResponseDto?> SendAsync(RequestDto requestDto)
     { 
         try{ 
         
