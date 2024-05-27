@@ -17,7 +17,7 @@ public class BaseService : IBaseService
     {
         _httpClientFactory = httpClientFactory;
     }
-     // Fr means for requestdto
+    
     public async Task<ResponseDto?> SendAsync(RequestDto requestDto)
     { 
         try{ 
@@ -51,13 +51,13 @@ public class BaseService : IBaseService
                message.Method = HttpMethod.Get;
                break;
            
-        }
-        HttpResponseMessage? apiResponse = null;
+          }
+          HttpResponseMessage? apiResponse = null;
 
-        apiResponse = await client.SendAsync(message);
+          apiResponse = await client.SendAsync(message);
 
-        switch (apiResponse.StatusCode)
-        {
+          switch (apiResponse.StatusCode)
+          {
            case HttpStatusCode.NotFound:
                return new ResponseDto() { IsSuccess = false, Message = "Not Found" };
            case HttpStatusCode.Forbidden:
@@ -70,7 +70,7 @@ public class BaseService : IBaseService
                var apiContent = await apiResponse.Content.ReadAsStringAsync();
                var apiResponseDto = JsonConvert.DeserializeObject<ResponseDto>(apiContent);
                return apiResponseDto;
-        }
+          }
         }
         catch (Exception ex)
         {
