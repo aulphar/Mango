@@ -96,6 +96,21 @@ public class AuthService : IAuthService
 
     public async Task<bool> AssignRole(string email, string roleName)
     {
-        throw new NotImplementedException();
+        var user =  _db.ApplicationUsers.FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
+        if (user != null)
+        {
+          // GetAwaiter().GetResult(): This method blocks the current thread until the asynchronous operation is complete.
+          // await: This keyword allows the method to asynchronously wait for the completion of the task without blocking the thread.
+            if (!_roleManager.RoleExistsAsync(roleName).GetAwaiter().GetResult())
+            {
+                //create role if it does not exist
+                _roleManager.CreateAsync(new IdentityRole(roleName)).GetAwaiter().GetResult(); 
+
+            }
+            await _userManager.AddToRoleAsync(user, roleName);
+            return true;
+        }
+        return false;
+
     }
 }
