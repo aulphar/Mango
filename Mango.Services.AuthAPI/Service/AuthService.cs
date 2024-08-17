@@ -54,7 +54,7 @@ public class AuthService : IAuthService
                 return result.Errors.FirstOrDefault().Description;
             }
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
            
         }
@@ -76,7 +76,8 @@ public class AuthService : IAuthService
             };
         }
          //if user found, generate JWT Token
-        var token = _jwtTokenGenerator.GenerateToken(user);
+         var roles = await _userManager.GetRolesAsync(user);
+        var token = _jwtTokenGenerator.GenerateToken(user, roles);
 
         UserDto userDto = new UserDto()
         {
@@ -101,14 +102,13 @@ public class AuthService : IAuthService
         {
           // GetAwaiter().GetResult(): This method blocks the current thread until the asynchronous operation is complete.
           // await: This keyword allows the method to asynchronously wait for the completion of the task without blocking the thread.
-            if (!_roleManager.RoleExistsAsync(roleName).GetAwaiter().GetResult())
-            {
-                //create role if it does not exist
-                _roleManager.CreateAsync(new IdentityRole(roleName)).GetAwaiter().GetResult(); 
-
-            }
-            await _userManager.AddToRoleAsync(user, roleName);
-            return true;
+          if (!_roleManager.RoleExistsAsync(roleName).GetAwaiter().GetResult())
+          {
+              //create role if it does not exist
+              _roleManager.CreateAsync(new IdentityRole(roleName)).GetAwaiter().GetResult();
+          }
+          await _userManager.AddToRoleAsync(user, roleName);
+          return true;
         }
         return false;
 

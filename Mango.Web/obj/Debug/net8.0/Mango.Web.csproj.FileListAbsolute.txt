@@ -225,3 +225,8 @@
 /Users/mickey/RiderProjects/Mango/Mango.Web/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Security.Cryptography.ProtectedData.dll
 /Users/mickey/RiderProjects/Mango/Mango.Web/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Windows.Extensions.dll
 /Users/mickey/RiderProjects/Mango/Mango.Web/obj/Debug/net8.0/Mango.Web.sourcelink.json
+/Users/mickey/RiderProjects/Mango/Mango.Web/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/mickey/RiderProjects/Mango/Mango.Web/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/mickey/RiderProjects/Mango/Mango.Web/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/mickey/RiderProjects/Mango/Mango.Web/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Users/mickey/RiderProjects/Mango/Mango.Web/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
